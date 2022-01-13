@@ -1,0 +1,140 @@
+//Pseudo Background Wesbite:
+.pseudo-bg-website-template {
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/modal-one/website-bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+// Background Colors:
+$modal-bg-dark-blue: #0c2848;
+$modal-bg-near-black: #13120d;
+$modal-bg-white: #ffffff;
+$modal-bg-darkred: #cf0a2c;
+
+// Text Colors:
+$modal-color-white: #ffffff;
+$modal-color-cream: #dfcaa3;
+
+.modal-one {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__underlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    top: 0;
+    left: 0;
+
+    &--bg-dark-white {
+      background-color: $modal-bg-white;
+    }
+  }
+
+  &__container {
+    z-index: 10001;
+    width: 1000px;
+    position: relative;
+
+    @media screen and (max-width: $break-medium) {
+      width: 680px;
+    }
+
+    @media screen and (max-width: $break-small) {
+      width: 460px;
+    }
+
+    @media screen and (max-width: $break-smaller) {
+      width: 85%;
+    }
+
+    &::before {
+    }
+
+    &::after {
+    }
+
+    &--bg-near-black {
+      background-color: $modal-bg-near-black;
+    }
+
+    &--color-white {
+      color: $modal-color-white;
+    }
+
+    &__close {
+      z-index: 10001;
+      position: sticky;
+      height: 50px;
+      width: 50px;
+      right: 0px;
+      margin: 16px;
+      top: 0px;
+      background-color: $modal-bg-darkred;
+      border-radius: 50%;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background-color: transparent;
+        border: 1px $modal-color-cream solid;
+
+        &:after {
+          color: $modal-color-cream;
+        }
+      }
+
+      &:after {
+        color: $modal-color-white;
+        position: absolute;
+        font-size: 29px;
+        top: 8px;
+        right: 17px;
+        content: "\00d7";
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 150px 85px;
+
+      @media screen and (max-width: $break-medium) {
+        padding: 65px 40px;
+      }
+
+      @media screen and (max-width: $break-small) {
+        width: 460px;
+        padding: 65px 20px;
+      }
+
+      @media screen and (max-width: $break-smaller) {
+        width: 85%;
+        padding: 65px 20px;
+      }
+
+      &__header {
+        & h1 {
+        }
+      }
+
+      &__info {
+        & p {
+        }
+      }
+    }
+  }
+}
