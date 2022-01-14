@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
@@ -37,4 +38,11 @@ h6 {
 // -------------------------------------------------------
 
 // One
-@import "components/card-one";
+@import "components/card-one-section";
+
+// -------------------------------------------------------
+// Galleries
+// -------------------------------------------------------
+
+// One
+@import "components/gallery-one-section";

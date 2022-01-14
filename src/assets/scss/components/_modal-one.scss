@@ -61,9 +61,27 @@ $modal-color-cream: #dfcaa3;
     }
 
     &::before {
+      position: absolute;
+      content: "";
+      width: 18px;
+      height: calc(100% - 2px);
+      background-color: $modal-bg-darkred;
+      left: -20px;
+      transform: skewY(45deg);
+      transform-origin: right;
+      border: 1px $modal-bg-near-black solid;
     }
 
     &::after {
+      position: absolute;
+      content: "";
+      width: calc(100% - 2px);
+      height: 18px;
+      background-color: $modal-bg-darkred;
+      top: -20px;
+      transform: skewX(45deg);
+      transform-origin: bottom;
+      border: 1px $modal-bg-near-black solid;
     }
 
     &--bg-near-black {
@@ -76,7 +94,7 @@ $modal-color-cream: #dfcaa3;
 
     &__close {
       z-index: 10001;
-      position: sticky;
+      position: absolute;
       height: 50px;
       width: 50px;
       right: 0px;
@@ -117,12 +135,10 @@ $modal-color-cream: #dfcaa3;
       }
 
       @media screen and (max-width: $break-small) {
-        width: 460px;
         padding: 65px 20px;
       }
 
       @media screen and (max-width: $break-smaller) {
-        width: 85%;
         padding: 65px 20px;
       }
 
