@@ -1,0 +1,162 @@
+/* Styles for the slider within slider */
+.sws-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 25px 0px;
+  background-color: honeydew;
+
+  &__header {
+    width: 800px;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+
+    &__content {
+      h2 {
+      }
+    }
+
+    &__left-vis,
+    &__right-vis {
+      flex: 1;
+      height: 2px;
+      background-color: black;
+    }
+
+    &__left-vis {
+      margin-right: 25px;
+    }
+    &__right-vis {
+      margin-left: 25px;
+    }
+  }
+
+  &__sub-title {
+    p {
+    }
+  }
+
+  &__content {
+    width: 711px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__main-slider {
+    width: 100%;
+    height: 100%;
+
+    .tns-liveregion {
+      display: none;
+    }
+
+    &__container {
+      overflow: hidden;
+    }
+
+    &__slides {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      &__slide {
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &__controls {
+    margin-top: 10px;
+    &__container {
+      position: relative;
+    }
+
+    &__directional {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+
+      &__container {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      &__prev,
+      &__next {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &__prev {
+        left: 13px;
+      }
+
+      &__next {
+        right: 13px;
+      }
+    }
+
+    &__preview-slider {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .tns-liveregion {
+        display: none;
+      }
+
+      &__container {
+        overflow: hidden;
+        margin-left: 58px;
+        margin-right: 58px;
+      }
+
+      &__slides {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        &__slide {
+          display: flex;
+          flex-direction: column;
+          &.tns-item {
+            //height: 100px !important;
+          }
+
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+          }
+
+          p {
+            margin-top: 10px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

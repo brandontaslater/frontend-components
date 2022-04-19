@@ -25,5 +25,8 @@
     "gulp-uglify": "^3.0.2",
     "sass": "^1.45.0",
     "streamqueue": "^1.1.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.0.0"
   }
 }

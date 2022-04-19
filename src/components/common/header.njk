@@ -1,11 +1,74 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Brandon Slater - components</title>
-        <link rel="stylesheet" href="/assets/css/styles.min.css"> 
-    </head>
-    <body>
-        <main>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brandon Slater - components</title>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            let username = getCookie("username");
+            if (username != "") {
+                alert("Welcome again " + username);
+            } else {
+                username = prompt("Please enter your name:", "");
+                if (username != "" && username != null) {
+                    setCookie("username", username, 365);
+                }
+            }
+        }
+    </script>
+
+    <script>
+
+        // Get HTML head element
+        var head = document.getElementsByTagName('HEAD')[0];
+
+        // Create new link Element
+        var link = document.createElement('link');
+
+        // set the attributes for link element 
+        link.rel = 'stylesheet';
+
+        link.type = 'text/css';
+
+        let cookieValue = getCookie("bs-theme-toggler-cookie");
+
+        if (cookieValue != "") {
+            link.href = '/assets/css/styles.min.css';
+        } else {
+            setCookie("bs-theme-toggler-cookie", "Default", 1);
+            link.href = '/assets/css/styles.min.css';
+        }
+
+        // Append link element to HTML head
+        head.appendChild(link); 
+    </script>
+</head>
+
+<body>
+    <main>

@@ -1,0 +1,119 @@
+.bs-theme-toggler-two {
+  position: fixed;
+  bottom: 0;
+  right: 1px;
+  display: flex;
+  padding: 0px;
+  align-items: center;
+  flex-direction: column;
+
+  &--transition {
+    -webkit-animation: mover 1s infinite alternate;
+    animation: mover 1s infinite alternate;
+
+    @-webkit-keyframes mover {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes mover {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -46px;
+    left: -189px;
+    width: 14px;
+    height: 14px;
+
+    &:hover {
+      background-color: red;
+      left: -199px;
+      top: -56px;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px #65f3d5 dotted;
+    width: 175px;
+    height: 32px;
+    border-radius: 25px;
+    top: -32px;
+    left: -175px;
+
+    &:hover {
+      border: 4px rebeccapurple solid;
+      cursor: pointer;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: -15px;
+      right: -10px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px dotted rebeccapurple;
+      transform: rotate(-25deg);
+    }
+
+    & p {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    &__message {
+      display: flex;
+    }
+
+    &__options {
+      display: none;
+      flex-direction: column;
+
+      & select {
+      }
+    }
+  }
+
+  &__robot {
+    width: 100px;
+    height: 100px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+  }
+}

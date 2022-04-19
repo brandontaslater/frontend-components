@@ -27,6 +27,16 @@ h6 {
 @import "responsive-resolutions";
 
 // -------------------------------------------------------
+// Theme Toggler
+// -------------------------------------------------------
+
+// One
+@import "components/_theme-toggler";
+
+// Two
+@import "components/_theme-toggler-two";
+
+// -------------------------------------------------------
 // Modals
 // -------------------------------------------------------
 
@@ -46,3 +56,13 @@ h6 {
 
 // One
 @import "components/gallery-one-section";
+
+// Two
+@import "components/gallery-two-section";
+
+// -------------------------------------------------------
+// Sliders
+// -------------------------------------------------------
+
+// One
+@import "components/_slider-within-slider";

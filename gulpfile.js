@@ -58,6 +58,16 @@ gulp.task("index", function (done) {
   done();
 });
 
+//exports fontawesome icons to build
+gulp.task("fontawesome-icons", function () {
+  return gulp
+    .src([
+      "node_modules/@fortawesome/fontawesome-free/svgs/**",
+      "src/assets/svg/*",
+    ])
+    .pipe(gulp.dest("build/assets/images/fontawesome/"));
+});
+
 //compile sass into css & auto-inject into browsers
 gulp.task("sass", function () {
   const plugins = [autoprefixer, cssnano];
@@ -85,10 +95,7 @@ gulp.task("sass-build", function () {
 
 //concatinate js into dev
 gulp.task("js", function () {
-  return streamqueue(
-    { objectMode: true },
-    gulp.src("src/assets/js/app.js")
-  )
+  return streamqueue({ objectMode: true }, gulp.src("src/assets/js/app.js"))
     .pipe(sourcemaps.init())
     .pipe(concat("application.min.js"))
     .pipe(sourcemaps.write("/"))
@@ -96,12 +103,48 @@ gulp.task("js", function () {
     .pipe(browserSync.stream());
 });
 
-//concatinate and compress js into prod
-gulp.task("js-build", function () {
+//concatinate js into dev
+gulp.task("js-tiny-slider", function () {
   return streamqueue(
     { objectMode: true },
-    gulp.src("src/assets/js/app.js")
+    gulp.src("src/assets/js/tiny-slider-min.js")
   )
+    .pipe(sourcemaps.init())
+    .pipe(concat("tiny-slider-min.js"))
+    .pipe(sourcemaps.write("/"))
+    .pipe(gulp.dest("build/assets/js"))
+    .pipe(browserSync.stream());
+});
+
+//concatinate js into dev
+gulp.task("js-slider-within-slider", function () {
+  return streamqueue(
+    { objectMode: true },
+    gulp.src("src/assets/js/slider-within-slider.js")
+  )
+    .pipe(sourcemaps.init())
+    .pipe(concat("slider-within-slider.min.js"))
+    .pipe(sourcemaps.write("/"))
+    .pipe(gulp.dest("build/assets/js"))
+    .pipe(browserSync.stream());
+});
+
+//concatinate js into dev
+gulp.task("js-theme-toggler", function () {
+  return streamqueue(
+    { objectMode: true },
+    gulp.src("src/assets/js/theme-toggler.js")
+  )
+    .pipe(sourcemaps.init())
+    .pipe(concat("theme-toggler.min.js"))
+    .pipe(sourcemaps.write("/"))
+    .pipe(gulp.dest("build/assets/js"))
+    .pipe(browserSync.stream());
+});
+
+//concatinate and compress js into prod
+gulp.task("js-build", function () {
+  return streamqueue({ objectMode: true }, gulp.src("src/assets/js/app.js"))
     .pipe(concat("application.min.js"))
     .pipe(uglify())
     .pipe(gulp.dest("build/assets/js"))
@@ -142,7 +185,10 @@ gulp.task(
     gulp.watch("src/assets/scss/*", gulp.series("sass"));
     gulp.watch("src/assets/scss/**/*", gulp.series("sass"));
     // watch js
-    gulp.watch("src/assets/js/*", gulp.series("js"));
+    gulp.watch(
+      "src/assets/js/*",
+      gulp.series("js", "js-tiny-slider", "js-slider-within-slider", "js-theme-toggler")
+    );
     // watch html
     gulp.watch("src/*.njk", gulp.series("html"));
     gulp.watch("src/**/*.njk", gulp.series("html"));
@@ -160,6 +206,8 @@ gulp.task(
     "images",
     "sass",
     "js",
+    "js-slider-within-slider",
+    "js-theme-toggler",
     "index",
     "serve",
     function (done) {
@@ -175,8 +223,12 @@ gulp.task(
     "clean",
     "html",
     "images",
+    "fontawesome-icons",
     "sass",
     "js",
+    "js-tiny-slider",
+    "js-slider-within-slider",
+    "js-theme-toggler",
     "index",
     function (done) {
       done();
@@ -191,8 +243,12 @@ gulp.task(
     "clean",
     "html",
     "images",
+    "fontawesome-icons",
     "sass-build",
     "js-build",
+    "js-tiny-slider",
+    "js-slider-within-slider",
+    "js-theme-toggler",
     "index",
     function (done) {
       done();
