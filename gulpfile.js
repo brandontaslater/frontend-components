@@ -142,6 +142,19 @@ gulp.task("js-theme-toggler", function () {
     .pipe(browserSync.stream());
 });
 
+//concatinate js into dev
+gulp.task("js-portfolio-widget", function () {
+  return streamqueue(
+    { objectMode: true },
+    gulp.src("src/assets/js/portfolio-widget.js")
+  )
+    .pipe(sourcemaps.init())
+    .pipe(concat("portfolio-widget.min.js"))
+    .pipe(sourcemaps.write("/"))
+    .pipe(gulp.dest("build/assets/js"))
+    .pipe(browserSync.stream());
+});
+
 //concatinate and compress js into prod
 gulp.task("js-build", function () {
   return streamqueue({ objectMode: true }, gulp.src("src/assets/js/app.js"))
@@ -187,7 +200,13 @@ gulp.task(
     // watch js
     gulp.watch(
       "src/assets/js/*",
-      gulp.series("js", "js-tiny-slider", "js-slider-within-slider", "js-theme-toggler")
+      gulp.series(
+        "js",
+        "js-tiny-slider",
+        "js-slider-within-slider",
+        "js-theme-toggler",
+        "js-portfolio-widget"
+      )
     );
     // watch html
     gulp.watch("src/*.njk", gulp.series("html"));
@@ -205,9 +224,12 @@ gulp.task(
     "html",
     "images",
     "sass",
+    "fontawesome-icons",
     "js",
+    "js-tiny-slider",
     "js-slider-within-slider",
     "js-theme-toggler",
+    "js-portfolio-widget",
     "index",
     "serve",
     function (done) {
@@ -249,6 +271,7 @@ gulp.task(
     "js-tiny-slider",
     "js-slider-within-slider",
     "js-theme-toggler",
+    "js-portfolio-widget",
     "index",
     function (done) {
       done();
